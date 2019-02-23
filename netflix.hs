@@ -11,8 +11,8 @@ tioGolpetazo = UnaSerie {
     nombre = "One punch man",
     genero = "Monito chino",
     duracion = 24,
-    cantTemporadas = 1,
-    calificaciones = [5,3,4,5,4],
+    cantTemporadas = 2,
+    calificaciones = [5],
     esOriginalDeNetflis = False
 }
 
@@ -65,7 +65,7 @@ treceRazonesPorque = UnaSerie {
 
 -- 1 Crear maraton
 
-maratonAnime = [tioGolpetazo, dbs]
+maratonAnime = [tioGolpetazo, dbs, treceRazonesPorque]
 
 -- 2 Saber la cantidad de series del maraton
 
@@ -114,9 +114,16 @@ medioCalificaciones puntuaciones = (init.tail) puntuaciones
 hypear serie | elem 1 (calificaciones serie) = (calificaciones serie)
              |otherwise = [(head (calificaciones serie)) +2] ++ medioCalificaciones(calificaciones serie) ++ [(last(calificaciones serie) +2)]
 
+-- DUDA: ¿como hago para que no se pase de 5?
 
+-- PARTE 2
 
+-- 1 series de monitoschinos
 
+esMonitoChino maraton = filter ((== "Monito chino").genero) maraton
 
+-- 2 
 
+dameLasQueSonOriginales maraton = filter (esOriginalDeNetflis) maraton
 
+dameOriginalesYValenLaPena maraton = filter (serieValeLaPena) (dameLasQueSonOriginales maraton)
