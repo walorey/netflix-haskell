@@ -69,6 +69,10 @@ maratonAnime = [tioGolpetazo, dbs]
 
 maratonPrecoz = [treceRazonesPorque, tioGolpetazo]
 
+maratonDramatico = [treceRazonesPorque, rompiendoMalo]
+
+maratonOriginalDeNetflis = [treceRazonesPorque, espejoNegro]
+
 -- 2 Saber la cantidad de series del maraton
 
 cuantasSeriesMaraton maraton = length maraton
@@ -118,6 +122,10 @@ hypear serie | elem 1 (calificaciones serie) = (calificaciones serie)
 
 -- DUDA: ¿como hago para que no se pase de 5?
 
+
+-------------------------------------------------------------------------------
+
+
 -- PARTE 2
 
 -- 1 series de monitoschinos
@@ -141,3 +149,11 @@ maratonFlojita maraton = all ((==1).cantTemporadas) maraton
 -- 5 cuanto tiempo se tarda en ver un maraton
 
 cuantoTarda maraton = sum (map duracion maraton)
+
+-- 6 nueva forma de saber si un maraton vale la pena
+
+maratonValeLaPena2 maraton = any (serieValeLaPena) maraton || elem rompiendoMalo maraton
+
+-- 7  calificacion mas alta de una serie original de netflix en un maraton
+
+calificacionMasAltaOriginalDeNetflis maraton = maximum (maximum (map calificaciones maraton))
