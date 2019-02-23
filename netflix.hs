@@ -11,7 +11,7 @@ tioGolpetazo = UnaSerie {
     nombre = "One punch man",
     genero = "Monito chino",
     duracion = 24,
-    cantTemporadas = 2,
+    cantTemporadas = 1,
     calificaciones = [5],
     esOriginalDeNetflis = False
 }
@@ -65,7 +65,9 @@ treceRazonesPorque = UnaSerie {
 
 -- 1 Crear maraton
 
-maratonAnime = [tioGolpetazo, dbs, treceRazonesPorque]
+maratonAnime = [tioGolpetazo, dbs]
+
+maratonPrecoz = [treceRazonesPorque, tioGolpetazo]
 
 -- 2 Saber la cantidad de series del maraton
 
@@ -122,8 +124,20 @@ hypear serie | elem 1 (calificaciones serie) = (calificaciones serie)
 
 esMonitoChino maraton = filter ((== "Monito chino").genero) maraton
 
--- 2 
+-- 2 originales de netflix y que valen la pena
 
 dameLasQueSonOriginales maraton = filter (esOriginalDeNetflis) maraton
 
 dameOriginalesYValenLaPena maraton = filter (serieValeLaPena) (dameLasQueSonOriginales maraton)
+
+-- 3 series que tengan n cantidad de temporadas
+
+cantidadDeTemporadas n maraton = filter ((==n).cantTemporadas) maraton
+
+-- 4 saber si la maraton es flojita
+
+maratonFlojita maraton = all ((==1).cantTemporadas) maraton
+
+-- 5 cuanto tiempo se tarda en ver un maraton
+
+cuantoTarda maraton = sum (map duracion maraton)
