@@ -12,7 +12,7 @@ tioGolpetazo = UnaSerie {
     genero = "Monito chino",
     duracion = 24,
     cantTemporadas = 1,
-    calificaciones = [5,3,4],
+    calificaciones = [5,3,4,5,4],
     esOriginalDeNetflis = False
 }
 
@@ -102,10 +102,17 @@ dispersion serie | (promediarCalificacion serie) == 0 = 0
                  |otherwise = (maximum (calificaciones serie)) - (minimum (calificaciones serie))
 
 
+-- 9 calificar serie
+
+calificar serie calificacion = (calificaciones serie) ++ [calificacion]
 
 
+-- 10 hypear serie
 
+medioCalificaciones puntuaciones = (init.tail) puntuaciones
 
+hypear serie | elem 1 (calificaciones serie) = (calificaciones serie)
+             |otherwise = [(head (calificaciones serie)) +2] ++ medioCalificaciones(calificaciones serie) ++ [(last(calificaciones serie) +2)]
 
 
 
