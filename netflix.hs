@@ -91,11 +91,15 @@ primerMitad maraton = take (length maraton `div` 2) maraton
 
 segundaMitad maraton = drop (length maraton `div` 2) maraton
 
---7 calcular calificaciones
+-- 7 calcular calificaciones
 
-calificar serie = (sum (calificaciones serie)) `div` (length (calificaciones serie))
+promediarCalificacion serie | length (calificaciones serie) ==0 = 0
+                |otherwise = (sum (calificaciones serie)) `div` (length (calificaciones serie))
 
+-- 8 obtener dispersion
 
+dispersion serie | (promediarCalificacion serie) == 0 = 0
+                 |otherwise = (maximum (calificaciones serie)) - (minimum (calificaciones serie))
 
 
 
