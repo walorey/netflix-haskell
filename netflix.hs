@@ -169,3 +169,17 @@ esSuspenso serie = (genero serie) == "Suspenso"
 seHypea serie = esDrama serie || esSuspenso serie
 
 hypearSiCorresponde maraton = map hypear (filter seHypea maraton)
+
+
+-------------------------------------------------------------------------
+
+
+-- Parte 3
+
+-- 1
+
+-- 1) a) promedio duracion de las series de un maraton ( duracion x cantidad de temporada)
+
+promedioSerieMaraton maraton = (sum (map duracionTotal maraton)) `div` (length maraton)
+
+duracionTotal serie = (duracion serie) * (cantTemporadas serie)
