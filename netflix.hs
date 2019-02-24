@@ -48,7 +48,7 @@ rompiendoMalo = UnaSerie {
     genero = "Drama",
     duracion = 200,
     cantTemporadas = 5,
-    calificaciones = [],
+    calificaciones = [5,1,2,4,5],
     esOriginalDeNetflis = False
 }
 
@@ -157,3 +157,14 @@ maratonValeLaPena2 maraton = any (serieValeLaPena) maraton || elem rompiendoMalo
 -- 7  calificacion mas alta de una serie original de netflix en un maraton
 
 calificacionMasAltaOriginalDeNetflis maraton = maximum (maximum (map calificaciones maraton))
+
+
+-- 8 hypear serie si corresponde
+
+hypearSicorresponde maraton |(esDrama || esSuspenso) maraton = map hypear maraton
+                            |otherwise = map calificaciones maraton
+
+esDrama serie = (genero serie) == "Drama"
+
+esSuspenso serie = (genero serie) == "Suspenso"
+
