@@ -39,7 +39,7 @@ espejoNegro = UnaSerie {
     genero = "Suspenso",
     duracion = 123,
     cantTemporadas = 4,
-    calificaciones = [2],
+    calificaciones = [2,2,4],
     esOriginalDeNetflis = True
 }
 
@@ -161,10 +161,11 @@ calificacionMasAltaOriginalDeNetflis maraton = maximum (maximum (map calificacio
 
 -- 8 hypear serie si corresponde
 
-hypearSicorresponde maraton |(esDrama || esSuspenso) maraton = map hypear maraton
-                            |otherwise = map calificaciones maraton
 
 esDrama serie = (genero serie) == "Drama"
 
 esSuspenso serie = (genero serie) == "Suspenso"
 
+seHypea serie = esDrama serie || esSuspenso serie
+
+hypearSiCorresponde maraton = map hypear (filter seHypea maraton)
