@@ -183,3 +183,13 @@ hypearSiCorresponde maraton = map hypear (filter seHypea maraton)
 promedioSerieMaraton maraton = (sum (map duracionTotal maraton)) `div` (length maraton)
 
 duracionTotal serie = (duracion serie) * (cantTemporadas serie)
+
+-- 1) b)
+
+calificacionMaraton maraton = (sum (map promediarCalificacion maraton)) `div` (length maraton)
+
+-- 1) c)
+
+maratonesVerano = [maratonAnime, maratonDramatico, maratonPrecoz]
+
+calificacionMaratones maratones = (sum (map calificacionMaraton maratones)) `div` (length maratones)
